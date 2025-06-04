@@ -1,0 +1,82 @@
+:root{
+    --pri: #39241e;
+    --sec : #7e513a;
+    --tri1 : #e97034;
+    --tri2: #ad6721;
+    
+}
+
+@font-face {
+    font-family: Light;
+    src: url(./Fonts/Aeonik-Light.ttf);
+};
+@font-face {
+    font-family:Normal;
+    src: url(./Fonts/Aeonik-Regular.ttf);
+}
+@font-face {
+    font-family: Bold;
+    src: url(./Fonts/Aeonik-Bold.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: var(--sec);
+}
+
+nav{
+    position: fixed;
+    height: 4rem;
+    width: 100%;
+    background-color: var(--tri1);
+}
+section.All-elems{
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    padding-top: 80px;
+  display: flex;    
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+ 
+}
+
+.Elem{  
+    background-color: var(--tri2);
+    border-radius: 20px;
+    font-family: Light;
+    font-size: 20px;
+    height: 400px;
+    width: 250px;
+  overflow: hidden;
+  position: relative;
+      transition: all  ease-in 0.2s;
+ 
+}
+.Elem img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+.Elem h2{
+    position: absolute;
+    bottom: 4%;
+    right: 5%;
+}
+.Elem:active{
+    scale: 0.97;
+
+}
