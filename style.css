@@ -1,104 +1,278 @@
-:root{
-    --pri: #39241e;
-    --sec : #7e513a;
-    --tri1 : #e97034;
-    --tri2: #ad6721;
-    
+:root {
+    --pri: #27374D;
+    --sec: #526D82;
+    --tri1: #9DB2BF;
+    --tri2: #DDE6ED;
+    --tri3: red;
+
 }
 
 @font-face {
     font-family: Light;
     src: url(./Fonts/Aeonik-Light.ttf);
-};
+}
+
+;
+
 @font-face {
-    font-family:Normal;
+    font-family: Aeonik-Normal;
+    font-weight: 500;
     src: url(./Fonts/Aeonik-Regular.ttf);
 }
+
 @font-face {
     font-family: Bold;
     src: url(./Fonts/Aeonik-Bold.ttf);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html,body{
+
+html,
+body {
     height: 100%;
     width: 100%;
     color: aliceblue;
 }
 
-#main{
+#main {
     height: 100%;
     width: 100%;
     background-color: var(--sec);
 }
 
-nav{
+nav {
     position: fixed;
     height: 4rem;
     width: 100%;
     background-color: var(--tri1);
 }
-section.All-elems{
+
+section.All-elems {
     height: 100%;
     width: 100%;
     padding: 40px;
     padding-top: 80px;
-  display: flex;    
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 40px;
-  position: absolute;
- 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
+    position: absolute;
+
 }
 
-.Elem{  
+.Elem {
     background-color: var(--tri2);
     border-radius: 20px;
     font-family: Light;
     font-size: 20px;
     height: 400px;
     width: 250px;
-  overflow: hidden;
-  position: relative;
-
-      transition: all  ease-in 0.2s;
- 
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all ease-in 0.2s;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0);
 }
-.Elem img{
+
+.Elem img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    
+
 }
-.Elem h2{
+
+.Elem h2 {
     position: absolute;
     bottom: 4%;
     right: 5%;
 }
-.Elem:active{
+
+.Elem:active {
     scale: 0.97;
 
 }
-.fullElem{
+
+.fullElem {
     height: 100%;
     width: 100%;
     padding: 30px;
-    background-color:var(--sec);
-    font-size: 40px;
+    background-color: var(--sec);
     display: none;
     position: absolute;
 }
-button.back{
+
+button.back {
     position: absolute;
     right: 5%;
-    background-color: red;
-    padding: 8px 10px;
+    background-color: var(--tri3);
+    color: #DDE6ED;
+    padding: 5px 19px;
     border-radius: 10%;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: medium;
+    cursor: pointer;
+}
+
+.Todo-list-fullpage {
+    display: block;
+}
+
+.Todo-list-fullpage h2 {
+    font-size: 60px;
+    font-family: bold;
+}
+
+.Todo-list-fullpage .todo-container {
+    height: 80%;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.Todo-list-fullpage .todo-container .addTask {
+    background-color: var(--pri);
+    width: 33%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+
+
+.Todo-list-fullpage .todo-container .addTask form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    padding-top: 3rem;
+}
+
+.todo-container .addTask form input#Task-input {
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background-color: var(--tri2);
+}
+
+.todo-container .addTask form textarea {
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background-color: var(--tri2);
+}
+
+.todo-container .addTask form button {
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: var(--tri1);
+    color: #0f1927;
+}
+
+.todo-container .addTask form button:active {
+    scale: 0.97;
+}
+
+.mark-imp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    padding: 10px 20px;
+    gap: 10px;
+
+}
+
+.mark-imp input {
+    scale: 2;
+}
+
+.mark-imp label {
+    font-size: 1.3rem;
+    font-family: Light;
+}
+
+/* //all task  */
+
+.Todo-list-fullpage .todo-container .allTask {
+    background-color: var(--pri);
+    width: 65%;
+    height: 100%;
+    border-radius: 2rem;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 30px;
+    font-family: Bold;
+    font-size: 2rem;
+    background-color: var(--tri2);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+
+}
+
+.task h5 {
+    color: var(--pri);
+    font-size: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.task h5 span {
+    background-color: var(--tri3);
+    color: var(--tri2);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 50px;
+}
+
+.task h5 span.true {
+    opacity: 1;
+}
+
+.task h5 span.false {
+    opacity: 0;
+}
+
+
+.task button {
+    padding: 12px 30px;
+    color: var(--tri2);
+    background-color: rgb(23, 102, 23);
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+
 }
