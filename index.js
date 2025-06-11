@@ -21,59 +21,66 @@ function OpenCards() {
 }
 OpenCards();
 
-var form = document.querySelector('.addTask form');
-var taskInput = document.querySelector('.addTask form #Task-input');
-var taskDetsInput = document.querySelector('.addTask form textarea');
-var taskCheckbox = document.querySelector('.addTask form #check');
 
-const currentTask = [
-   {
-      task: "khana banao",
-      details: "mirch masala dal k",
-      imp: true,
-   },
-   {
-      task: "school japo",
-      details: "books leke jao",
-      imp: false,
-   },
-   {
-      task: "pizaa khao",
-      details: "mirch masala dal k",
-      imp: true,
+function TodoList() {
+   var form = document.querySelector('.addTask form');
+   var taskInput = document.querySelector('.addTask form #Task-input');
+   var taskDetsInput = document.querySelector('.addTask form textarea');
+   var taskCheckbox = document.querySelector('.addTask form #check');
+
+   var currentTask = []
+
+   if (localStorage.getItem(('currentTask'))) {
+      currentTask = JSON.parse(localStorage.getItem(("currentTask")));
+   } else {
+      alert("Task List Is Empty..");
    }
-]
+
+   function renderTask() {
+      localStorage.setItem('currentTask', JSON.stringify(currentTask))
+      var allTask = document.querySelector(".allTask");
+      var sum = "";
+      currentTask.forEach(function (elem, idx) {
+         sum += `<div class="task">
+           <h5>${elem.task} <span class=${elem.imp}>imp</span></h5>
+           <button id=${idx}>Mark as completed</button>
+           </div> `
+      })
+
+      allTask.innerHTML = sum;
+
+      var markCompletedBtn = document.querySelectorAll('.task button');
+      markCompletedBtn.forEach(function (btn) {
+         btn.addEventListener('click', function () {
+            currentTask.splice(btn.id, 1);
+            renderTask();
 
 
-
-function renderTask() {
-   var allTask = document.querySelector(".allTask");
-   var sum = "";
-   currentTask.forEach(function (elem) {
-      sum += `<div class="task">
-                        <h5>${elem.task} <span class=${elem.imp}>imp</span></h5>
-                        <button>Mark as completed</button>
-                    </div> `
-   })
-
-   allTask.innerHTML = sum;
-}
-renderTask();
-
-
-form.addEventListener('submit', (e) => {
-   e.preventDefault();
-   // console.log(taskInput.value);
-   // console.log(taskDetsInput.value);
-   // console.log(taskCheckbox.checked);
-
-   currentTask.push(
-      {
-         task: taskInput.value,
-         details: taskDetsInput.valueS,
-         imp: taskCheckbox.checked
-      }
-   )
+         })
+         taskCheckbox.checked = false;
+         taskInput.value = "";
+         taskDetsInput.value = "";
+      })
+   }
    renderTask();
 
-})
+
+
+   form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      currentTask.push(
+         {
+            task: taskInput.value,
+            details: taskDetsInput.value,
+            imp: taskCheckbox.checked
+         }
+      )
+      renderTask();
+
+   })
+
+
+}
+
+TodoList();
