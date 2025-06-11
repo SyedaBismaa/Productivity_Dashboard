@@ -19,7 +19,7 @@ function OpenCards() {
 
    })
 }
-OpenCards();
+// OpenCards();
 
 
 function TodoList() {
@@ -38,8 +38,8 @@ function TodoList() {
 
    function renderTask() {
       localStorage.setItem('currentTask', JSON.stringify(currentTask))
-      var allTask = document.querySelector(".allTask");
-      var sum = "";
+      let allTask = document.querySelector(".allTask");
+      let sum = "";
       currentTask.forEach(function (elem, idx) {
          sum += `<div class="task">
            <h5>${elem.task} <span class=${elem.imp}>imp</span></h5>
@@ -83,4 +83,32 @@ function TodoList() {
 
 }
 
-TodoList();
+// TodoList();
+
+
+var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+var wholeDaySum = ' '
+hours.forEach(function (elem) {
+   wholeDaySum += `
+   
+   
+ <div class="time-planner">
+   <p>${elem}</p>
+   <input type="text" placeholder="...">
+</div>
+   
+   `
+})
+
+var dayPlanner = document.querySelector('.day-planner');
+
+dayPlanner.innerHTML = wholeDaySum;
+
+var dayPlannerInput = document.querySelectorAll('.day-planner input');
+
+dayPlannerInput.forEach(function (elem) {
+   elem.addEventListener('input', function () {
+      console.log(elem.value);
+
+   })
+})
