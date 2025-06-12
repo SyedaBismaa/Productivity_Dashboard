@@ -19,8 +19,7 @@ function OpenCards() {
 
    })
 }
-// OpenCards();
-
+OpenCards();
 
 function TodoList() {
    var form = document.querySelector('.addTask form');
@@ -83,32 +82,72 @@ function TodoList() {
 
 }
 
-// TodoList();
+TodoList();
 
+function dailyPlanner() {
+   var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+   var dayPlanner = document.querySelector('.day-planner');
 
-var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
-var wholeDaySum = ' '
-hours.forEach(function (elem) {
-   wholeDaySum += `
-   
-   
+   var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+
+   var wholeDaySum = ' '
+   hours.forEach(function (elem, idx) {
+      var saveData = dayPlanData[idx] || '';
+
+      wholeDaySum += `
  <div class="time-planner">
    <p>${elem}</p>
-   <input type="text" placeholder="...">
-</div>
-   
-   `
-})
-
-var dayPlanner = document.querySelector('.day-planner');
-
-dayPlanner.innerHTML = wholeDaySum;
-
-var dayPlannerInput = document.querySelectorAll('.day-planner input');
-
-dayPlannerInput.forEach(function (elem) {
-   elem.addEventListener('input', function () {
-      console.log(elem.value);
-
+   <input id=${idx} type="text" placeholder="..." value=${saveData}>
+</div>  `
    })
-})
+
+   dayPlanner.innerHTML = wholeDaySum;
+
+   var dayPlannerInput = document.querySelectorAll('.day-planner input');
+
+
+   dayPlannerInput.forEach(function (elem) {
+      elem.addEventListener('input', function () {
+         dayPlanData[elem.id] = elem.value;
+
+         localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData));
+
+      })
+   })
+}
+dailyPlanner();
+
+
+
+
+function motivationalQuote() {
+    const motivationQuoteContent = document.querySelector('.moti-2 h1');
+    const motivationAuthor = document.querySelector('.moti-3 h2');
+// https://cors-anywhere.herokuapp.com/https://zenquotes.io/api/quotes
+    async function fetchQuote() {
+        try {
+            const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.quotable.io/random');
+            const data = await response.json();
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const quote = data[randomIndex];
+
+            motivationQuoteContent.innerHTML = `"${quote.q}"`;
+            motivationAuthor.innerHTML = `– ${quote.a}`;
+        } catch (error) {
+            console.error("Failed to fetch quote:", error);
+            motivationQuoteContent.innerHTML = "Failed to load quote 😞";
+            motivationAuthor.innerHTML = "";
+        }
+    }
+
+    fetchQuote();
+}
+
+motivationalQuote();
+
+
+
+
+
+
+// https://cors-anywhere.herokuapp.com/https://zenquotes.io/api/quotes
