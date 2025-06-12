@@ -118,36 +118,56 @@ function dailyPlanner() {
 dailyPlanner();
 
 
-
-
 function motivationalQuote() {
-    const motivationQuoteContent = document.querySelector('.moti-2 h1');
-    const motivationAuthor = document.querySelector('.moti-3 h2');
-// https://cors-anywhere.herokuapp.com/https://zenquotes.io/api/quotes
-    async function fetchQuote() {
-        try {
-            const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.quotable.io/random');
-            const data = await response.json();
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const quote = data[randomIndex];
+   const motivationQuoteContent = document.querySelector('.moti-2 h1');
+   const motivationAuthor = document.querySelector('.moti-3 h2');
 
-            motivationQuoteContent.innerHTML = `"${quote.q}"`;
-            motivationAuthor.innerHTML = `– ${quote.a}`;
-        } catch (error) {
-            console.error("Failed to fetch quote:", error);
-            motivationQuoteContent.innerHTML = "Failed to load quote 😞";
-            motivationAuthor.innerHTML = "";
-        }
-    }
+   // Fallback quotes
+   const fallbackQuotes = [
+      { q: "The only way to do great work is to love what you do.", a: "Steve Jobs" },
+      { q: "Believe you can and you're halfway there.", a: "Theodore Roosevelt" },
+      { q: "Stay hungry, stay foolish.", a: "Steve Jobs" }
+   ];
 
-    fetchQuote();
+   async function fetchQuote() {
+      // Check cache
+      const cachedQuote = localStorage.getItem('motivationalQuote');
+      const cacheTimestamp = localStorage.getItem('quoteTimestamp');
+      const cacheDuration = 24 * 60 * 60 * 1000; // 24 hours
+
+      if (cachedQuote && cacheTimestamp && Date.now() - cacheTimestamp < cacheDuration) {
+         const quote = JSON.parse(cachedQuote);
+         motivationQuoteContent.innerHTML = `"${quote.q}"`;
+         motivationAuthor.innerHTML = `– ${quote.a}`;
+         return;
+      }
+
+      try {
+         const response = await fetch('https://thingproxy.freeboard.io/fetch/https://zenquotes.io/api/quotes');
+         const data = await response.json(); // No need to parse contents with this proxy
+         const randomIndex = Math.floor(Math.random() * data.length);
+         const quote = data[randomIndex];
+
+         // Update DOM
+         motivationQuoteContent.innerHTML = `"${quote.q}"`;
+         motivationAuthor.innerHTML = `– ${quote.a}`;
+
+         // Cache the quote
+         localStorage.setItem('motivationalQuote', JSON.stringify(quote));
+         localStorage.setItem('quoteTimestamp', Date.now());
+      } catch (error) {
+         console.error("Failed to fetch quote:", error);
+         // Use fallback quote
+         const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+         motivationQuoteContent.innerHTML = `"${randomFallback.q}"`;
+         motivationAuthor.innerHTML = `– ${randomFallback.a}`;
+      }
+   }
+
+   fetchQuote();
 }
 
 motivationalQuote();
 
 
 
-
-
-
-// https://cors-anywhere.herokuapp.com/https://zenquotes.io/api/quotes
