@@ -4,15 +4,15 @@
     --tri1: #9DB2BF;
     --tri2: #DDE6ED;
     --tri3: red;
+    --green: rgb(33, 145, 64);
+    --blue: rgb(25, 87, 96);
 
 }
 
 @font-face {
     font-family: Light;
     src: url(./Fonts/Aeonik-Light.ttf);
-}
-
-;
+};
 
 @font-face {
     font-family: Aeonik-Normal;
@@ -324,9 +324,16 @@ button.back {
 
 /* Motivational Quotes  */
 
+.motivational-fullPage-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .Motivtional-fullpage {
     position: relative;
-    min-height: 100vh;
 }
 
 .Motivtional-fullpage .motivational-container {
@@ -335,25 +342,13 @@ button.back {
     width: auto;
     border-radius: 50px;
     background-color: var(--tri1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 20px;
     box-sizing: border-box;
+    border: 3px solid var(--pri);
+
 }
 
-.Motivtional-fullpage .motivational-container::after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: #0b3d83;
-    border-radius: 50px;
-    scale: 1.15;
-    filter: blur(80px);
-    z-index: 8;
-}
+/* //after  */
 
 .Motivtional-fullpage .motivational-container .motivational-wrapper {
     z-index: 10;
@@ -375,7 +370,6 @@ button.back {
 .moti-1 h2 {
     font-size: 2rem;
     font-family: Light;
-    margin: 0;
 }
 
 .moti-2 {
@@ -398,16 +392,62 @@ button.back {
     border-radius: 50px;
     color: var(--pri);
     text-align: right;
+
 }
 
 .moti-3 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: Light;
-    margin: 0;
+
 }
 
- /* Pomodoro Timer  */
+/* Pomodoro Timer  */
 
- .pomodoro-fullpage{
-    display: block;
- }
+.pomodoro-fullpage {
+    position: relative;
+}
+
+.pomodoro-fullpage h1 {
+    font-size: 3rem;
+    font-family: Bold;
+}
+
+.pomodoro-fullpage .pomo-timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.pomo-timer h1 {
+    font-size: 7rem;
+    padding-bottom: 3rem;
+    color: var(--tri2);
+}
+
+.pomo-timer button {
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 0px var(--pri);
+    border: none;
+    transition: all ease-in 2.5ms;
+    margin-left: 1rem;
+}
+
+.pomo-timer button:active {
+    box-shadow: 0px 0px 0px var(--pri);
+}
+
+.pomodoro-fullpage .work-session {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--green);
+    padding: 15px 28px;
+    font-size: 1.5rem;
+    font-family: Light;
+    border-radius: 5px;
+}
