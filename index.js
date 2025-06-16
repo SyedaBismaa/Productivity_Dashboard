@@ -31,9 +31,7 @@ function TodoList() {
 
    if (localStorage.getItem(('currentTask'))) {
       currentTask = JSON.parse(localStorage.getItem(("currentTask")));
-   } else {
-      alert("Task List Is Empty..");
-   }
+   } ;
 
    function renderTask() {
       localStorage.setItem('currentTask', JSON.stringify(currentTask))
@@ -247,11 +245,8 @@ PomodoroTimer();
 
 function WeatherDash() {
 
-   var cityres = prompt("Enter Your City Please!");
-
-
    var apiKey = '0e4fbc436dec47c7baa61455251506';
-   var city = `${cityres}`;
+   var city = 'parbhani';
 
 
    var header1Time = document.querySelector('.header-1 h1');
