@@ -247,12 +247,11 @@ PomodoroTimer();
 
 function WeatherDash() {
 
-   // var cityres = prompt("Enter Your City Please!");
+   var cityres = prompt("Enter Your City Please!");
 
 
    var apiKey = '0e4fbc436dec47c7baa61455251506';
-   // var city = `${cityres}`;
-   var city = 'parbhani'
+   var city = `${cityres}`;
 
 
    var header1Time = document.querySelector('.header-1 h1');
