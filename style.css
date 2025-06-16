@@ -1,18 +1,11 @@
 :root {
     --pri: #1E2A44;
-    /* Deep navy */
     --sec: #4A8B9F;
-    /* Soft teal */
     --tri1: #F5F7FA;
-    /* Creamy white */
     --tri2: #E0E7F0;
-    /* Pale blue-gray */
     --tri3: #FF6B6B;
-    /* Vibrant coral */
     --green: #2ECC71;
-    /* Mint green */
     --blue: #3498DB;
-    /* Calming blue */
 }
 
 @font-face {
@@ -34,6 +27,7 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -41,7 +35,9 @@ html,
 body {
     height: 100%;
     width: 100%;
+    /* overflow: hidden; */
     color: var(--tri1);
+    background-color: var(--sec);
     font-family: Light, sans-serif;
 }
 
@@ -52,12 +48,59 @@ body {
 }
 
 nav {
-    position: fixed;
-    height: 4rem;
+    height: 60px;
     width: 100%;
-    background-color: var(--tri1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    padding: 15px 30px;
+}
+
+.nav-in {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #1E2A44;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 19px;
+    border-radius: 10px;
+
+}
+
+.nav-in h2 {
+    font-size: 1.5rem;
+    font-weight: Light;
+    letter-spacing: 0.5px;
+}
+
+.theme {
+    background-color: var(--sec);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+}
+
+.theme:hover {
+    background-color: var(--tri2);
+    color: #000;
+}
+
+.theme:hover:active {
+    scale: 0.97;
+}
+
+.theme h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    pointer-events: none;
 }
 
 section.All-elems {
@@ -77,10 +120,16 @@ section.All-elems {
     background-image: url('https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-position: center;
     background-size: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color: var(--pri);
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 4rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 2rem;
 }
@@ -110,10 +159,17 @@ header .header-2 h4 {
 }
 
 .All-elems .All-Features {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 20px;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
 }
 
@@ -122,23 +178,32 @@ header .header-2 h4 {
     border-radius: 15px;
     font-family: Light;
     font-size: 18px;
-    height: 350px;
+    height: 340px;
     width: 220px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+    transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .Elem:hover {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
     transform: translateY(-5px);
+    -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .Elem img {
     height: 100%;
     width: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 
@@ -151,6 +216,8 @@ header .header-2 h4 {
 }
 
 .Elem:active {
+    -webkit-transform: scale(0.97);
+    -ms-transform: scale(0.97);
     transform: scale(0.97);
 }
 
@@ -177,10 +244,16 @@ button.back {
     font-size: 20px;
     font-family: Aeonik-Normal;
     cursor: pointer;
+    -webkit-transition: -webkit-transform 0.2s ease;
+    transition: -webkit-transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
     transition: transform 0.2s ease;
+    transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
 button.back:hover {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
@@ -190,27 +263,62 @@ button.back:hover {
     color: var(--tri1);
 }
 
+.Todo-list-fullpage {
+    z-index: 1;
+}
+
+.todo-bg-vid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#Todo {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
 .Todo-list-fullpage .todo-container {
     height: 80%;
     width: 100%;
     margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     gap: 20px;
 }
 
 .Todo-list-fullpage .todo-container .addTask {
-    background-color: var(--pri);
     width: 35%;
     height: 100%;
     border-radius: 1.5rem;
     padding: 1.5rem;
+    border: 0.5px solid var(--tri2);
 }
 
 .Todo-list-fullpage .todo-container .addTask form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     padding: 1.5rem;
 }
@@ -225,7 +333,7 @@ button.back:hover {
     font-size: 1.1rem;
     margin-bottom: 15px;
     background-color: var(--tri2);
-    color: var(--pri);
+    opacity: 0.9;
 }
 
 .todo-container .addTask form button {
@@ -235,19 +343,31 @@ button.back:hover {
     border: none;
     outline: none;
     font-size: 1.1rem;
-    font-family: Aeonik-Normal;
     background-color: var(--tri1);
     color: var(--pri);
+    -webkit-transition: -webkit-transform 0.2s ease;
+    transition: -webkit-transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
     transition: transform 0.2s ease;
+    transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+    opacity: 0.9;
 }
 
 .todo-container .addTask form button:hover {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
 .mark-imp {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100%;
     margin-bottom: 1rem;
@@ -256,6 +376,8 @@ button.back:hover {
 }
 
 .mark-imp input {
+    -webkit-transform: scale(1.8);
+    -ms-transform: scale(1.8);
     transform: scale(1.8);
     margin-right: 8px;
 }
@@ -267,20 +389,35 @@ button.back:hover {
 }
 
 .Todo-list-fullpage .todo-container .allTask {
-    background-color: var(--pri);
+    border: 0.5px solid var(--tri1);
     width: 60%;
     height: 100%;
     border-radius: 1.5rem;
     padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     overflow: auto;
+    opacity: 0.9;
+
 }
 
 .task {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100%;
     padding: 8px 20px;
@@ -293,8 +430,12 @@ button.back:hover {
 
 .task h5 {
     color: var(--pri);
-    font-size: 18px;
+    font-size: 19px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 0.4rem;
 }
@@ -319,51 +460,92 @@ button.back:hover {
     padding: 10px 25px;
     color: var(--tri1);
     background-color: var(--green);
-    font-size: 14px;
+    font-size: 15px;
     border-radius: 5px;
     border: none;
-    font-family: light;
+    font-family: Bold;
+    -webkit-transition: -webkit-transform 0.2s ease;
+    transition: -webkit-transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
     transition: transform 0.2s ease;
+    transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
 .task button:hover {
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
 .Daily-planer-fullpage h1 {
     font-size: 40px;
     font-family: Bold;
-    color: var(--tri1);
+    color: var(--pri);
     text-align: center;
 }
 
+.Daily-planer-fullpage {
+    z-index: 1;
+}
+
+.daily-bg-vid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#Daily {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
 .Daily-planer-fullpage .day-planner {
-    background-color: var(--pri);
     height: 85%;
     width: 100%;
     margin-top: 30px;
     border-radius: 8px;
     padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     overflow: auto;
 }
 
 .Daily-planer-fullpage .day-planner .time-planner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     position: relative;
     width: 48%;
     margin-bottom: 12px;
+
+
 }
 
 .day-planner .time-planner p {
     position: absolute;
     top: 8%;
     left: 2%;
-    font-size: 16px;
+    font-size: 19px;
+    font-family: Bold;
     color: var(--pri);
 }
 
@@ -379,45 +561,71 @@ button.back:hover {
     color: var(--pri);
 }
 
+/* Motivational Container  */
+.Motivtional-fullpage {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.moti-bg-vid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#Moti {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/* Center container */
 .motivational-fullPage-container {
     height: 100%;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
-.Motivtional-fullpage {
-    position: relative;
-}
-
 .Motivtional-fullpage .motivational-container {
-    min-height: 300px;
-    max-width: 90%;
+    min-height: 370px;
+    max-width: 100%;
     width: auto;
-    border-radius: 50px;
-    background-color: var(--tri1);
-    padding: 20px;
+    margin-bottom: 8rem;
+    padding: 30px;
+    border-radius: 10px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border: 3px solid var(--pri);
-
+    border: 2px solid var(--tri1);
 }
-
-/* //after  */
 
 .Motivtional-fullpage .motivational-container .motivational-wrapper {
     z-index: 10;
     position: relative;
     width: 100%;
-    background-color: var(--tri1);
-    border-radius: 50px;
-    padding: 18px;
+    padding: 25px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .motivational-container .motivational-wrapper .moti-1 {
-    padding: 20px;
-    background-color: var(--sec);
+    padding: 15px;
+    border: 2px solid var(--tri1);
     border-radius: 50px;
     text-align: center;
 }
@@ -427,9 +635,9 @@ button.back:hover {
     font-family: Light;
 }
 
+/* Quote text */
 .moti-2 {
     padding: 2rem;
-    word-wrap: break-word;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -437,30 +645,29 @@ button.back:hover {
 .moti-2 h1 {
     font-size: 2rem;
     font-family: Light;
-    color: var(--pri);
+    color: var(--tri1);
     margin: 0;
-    line-height: 1.4;
 }
 
+/* Quote author */
 .moti-3 {
     padding: 20px;
     border-radius: 50px;
-    color: var(--pri);
+    color: var(--tri1);
     text-align: right;
-
 }
 
 .moti-3 h2 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-family: Light;
-
 }
+
 
 /* Pomodoro Timer  */
 
 .pomodoro-fullpage {
     position: relative;
-    z-index: 1;    
+    z-index: 1;
 }
 
 .pomo-bg-vid {
@@ -469,6 +676,7 @@ button.back:hover {
     left: 0;
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
     z-index: -1;
 }
@@ -476,21 +684,24 @@ button.back:hover {
 #pomovid {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
 
 .pomodoro-fullpage h1 {
     font-size: 3rem;
     font-family: Bold;
-    
-    
+
+
 }
 
 .pomodoro-fullpage .pomo-timer {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
 }
@@ -505,13 +716,17 @@ button.back:hover {
     padding: 10px 25px;
     font-size: 1.2rem;
     border-radius: 1rem;
+    -webkit-box-shadow: 6px 6px 0px var(--pri);
     box-shadow: 6px 6px 0px var(--pri);
     border: none;
+    -webkit-transition: all ease-in 2.5ms;
+    -o-transition: all ease-in 2.5ms;
     transition: all ease-in 2.5ms;
     margin-left: 1rem;
 }
 
 .pomo-timer button:active {
+    -webkit-box-shadow: 0px 0px 0px var(--pri);
     box-shadow: 0px 0px 0px var(--pri);
 }
 
@@ -519,6 +734,8 @@ button.back:hover {
     position: absolute;
     top: 20%;
     left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     background-color: var(--tri1);
     color: var(--pri);
@@ -531,8 +748,10 @@ button.back:hover {
 
 @media (max-width: 768px) {
 
+    html,
     body {
         background-color: var(--sec);
+        overflow: visible;
     }
 
     nav {
@@ -569,8 +788,13 @@ button.back:hover {
     }
 
     .Todo-list-fullpage .todo-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         height: auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 
@@ -605,6 +829,9 @@ button.back:hover {
     }
 
     .Daily-planer-fullpage .day-planner {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         height: auto;
         padding: 15px;
@@ -638,6 +865,8 @@ button.back:hover {
         position: absolute;
         top: 50%;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
 
     }
@@ -689,8 +918,13 @@ button.back:hover {
     }
 
     .pomo-timer button {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         margin-bottom: 1.2rem;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
         flex-direction: row;
         font-size: 1.3rem;
         padding: 0.2rem 2rem;
@@ -698,40 +932,56 @@ button.back:hover {
 
 
     .All-elems header {
-    height: 16rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem;
-    color: var(--pri);
+        height: 16rem;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 1.5rem;
+        color: var(--pri);
+    }
+
+    header .header-1 h1 {
+        font-size: 2rem;
+        font-family: Bold;
+    }
+
+    header .header-1 h2 {
+        font-size: 1rem;
+    }
+
+    header .header-1 h4 {
+        font-size: 0.9rem;
+    }
+
+    header .header-2 {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    header .header-2 h2 {
+        font-size: 1.5rem;
+    }
+
+    header .header-2 h3 {
+        font-size: 0.9rem;
+    }
+
+    header .header-2 h4 {
+        font-size: 1rem;
+    }
 }
 
-header .header-1 h1 {
-    font-size: 2rem;
-    font-family: Bold;
-}
-
-header .header-1 h2 {
-    font-size: 1rem;
-}
-
-header .header-1 h4 {
-    font-size: 0.9rem;
-}
-header .header-2{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-header .header-2 h2 {
-    font-size: 1.5rem;
-}
-
-header .header-2 h3 {
-    font-size: 0.9rem;
-}
-
-header .header-2 h4 {
-    font-size: 1rem;
-}
+.box {
+    -webkit-box-shadow: 0 0 10px #cecece;
+    box-shadow: 0 0 10px #cecece;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
 }

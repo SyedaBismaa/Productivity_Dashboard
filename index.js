@@ -243,3 +243,138 @@ function PomodoroTimer() {
 }
 
 PomodoroTimer();
+
+
+function WeatherDash() {
+
+   // var cityres = prompt("Enter Your City Please!");
+
+
+   var apiKey = '0e4fbc436dec47c7baa61455251506';
+   // var city = `${cityres}`;
+   var city = 'parbhani'
+
+
+   var header1Time = document.querySelector('.header-1 h1');
+   var header1Date = document.querySelector('.header-1 h2');
+   var header1Location = document.querySelector('.header-1 h4');
+
+
+   var header2Temp = document.querySelector('.header-2 h2');
+   var header2Condition = document.querySelector('.header-2 h4');
+   var heatidx = document.querySelector('.header-2 .heatidx');
+   var Humidity = document.querySelector('.header-2 .Humidity');
+   var wind = document.querySelector('.header-2 .Wind');
+
+
+
+
+   async function wheatherApiCall() {
+      var response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`);
+      var data = await response.json();
+
+      header2Temp.innerHTML = `${data.current.temp_c} °C`
+      header2Condition.innerHTML = `${data.current.condition.text} °C`
+      wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
+      Humidity.innerHTML = `Humidity: ${data.current.humidity}%`
+      heatidx.innerHTML = `HeatIndex: ${data.current.heatindex_c}%`
+
+      header1Location.innerHTML = `${data.location.name}, ${data.location.region}`
+
+
+   }
+
+   wheatherApiCall();
+
+
+
+
+
+   function dateTime() {
+      const totalDaysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const totalMonthNames = [
+         "January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"
+      ];
+      var date = new Date();
+      var daysOfWeek = totalDaysOfWeek[date.getDay()];
+      var Hours = date.getHours();
+      var minuts = date.getMinutes();
+      var secounds = date.getSeconds();
+      var Datee = date.getDate();
+      var month = totalMonthNames[date.getMonth()]
+      var year = date.getFullYear();
+
+      header1Date.innerHTML = `${Datee} ${month}, ${year}`
+
+
+      if (Hours > 12) {
+         header1Time.innerHTML = `${daysOfWeek}, ${String(Hours - 12).padStart('2', '0')}:${String(minuts).padStart('2', '0')}:${String(secounds).padStart('2', '0')} PM`;
+      } else {
+         header1Time.innerHTML = `${daysOfWeek}, ${String(Hours - 12).padStart('2', '0')}:${String(minuts).padStart('2', '0')}:${String(secounds).padStart('2', '0')} AM`;
+      }
+   }
+
+
+   setInterval(() => {
+      dateTime();
+   }, 1000);
+}
+
+WeatherDash();
+
+function changeTheme() {
+
+   var theme = document.querySelector('.theme')
+   var rootElement = document.documentElement
+
+   var flag = 0
+   theme.addEventListener('click', function () {
+
+
+      if (flag === 0) {
+         rootElement.style.setProperty('--pri', '#5C4033');
+         rootElement.style.setProperty('--sec', '#B29985');
+         rootElement.style.setProperty('--tri1', '#F5EDE3');
+         rootElement.style.setProperty('--tri2', '#D7CCC8');
+         rootElement.style.setProperty('--tri3', '#CBA192');
+         rootElement.style.setProperty('--green', '#9DC183');
+         rootElement.style.setProperty('--blue', '#7A9E9F');
+         flag = 1;
+      } else if (flag === 1) {
+         rootElement.style.setProperty('--pri', '#2F3E46');
+         rootElement.style.setProperty('--sec', '#84A98C');
+         rootElement.style.setProperty('--tri1', '#CAD2C5');
+         rootElement.style.setProperty('--tri2', '#EDF6F9');
+         rootElement.style.setProperty('--tri3', '#B5CDA3');
+         rootElement.style.setProperty('--green', '#A3B18A');
+         rootElement.style.setProperty('--blue', '#6C91BF');
+         flag = 2;
+      } else if (flag === 2) {
+         // Theme 3 – Mocha Glow (Updated)
+         rootElement.style.setProperty('--pri', '#2E1F1B');
+         rootElement.style.setProperty('--sec', '#A47148');
+         rootElement.style.setProperty('--tri1', '#F4ECE6');
+         rootElement.style.setProperty('--tri2', '#8E735B');
+         rootElement.style.setProperty('--tri3', '#D9A86C');
+         rootElement.style.setProperty('--green', '#B6CE91');
+         rootElement.style.setProperty('--blue', '#9CB4C0');
+         flag = 3;
+      } else {
+         // Default – Ocean Calm (your main palette)
+         rootElement.style.setProperty('--pri', '#1E2A44');
+         rootElement.style.setProperty('--sec', '#4A8B9F');
+         rootElement.style.setProperty('--tri1', '#F5F7FA');
+         rootElement.style.setProperty('--tri2', '#E0E7F0');
+         rootElement.style.setProperty('--tri3', '#FF6B6B');
+         rootElement.style.setProperty('--green', '#2ECC71');
+         rootElement.style.setProperty('--blue', '#3498DB');
+         flag = 0;
+      }
+
+   })
+
+
+}
+
+changeTheme()
