@@ -117,7 +117,6 @@ section.All-elems {
     border-radius: 10px;
     margin-bottom: 3rem;
     width: 100%;
-    background-image: url('https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-position: center;
     background-size: cover;
     display: -webkit-box;
@@ -132,7 +131,27 @@ section.All-elems {
     -ms-flex-align: center;
     align-items: center;
     gap: 2rem;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
+
+.weather-bg-vid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.weather-bg-vid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 header .header-1 h1 {
     font-size: 4.4rem;

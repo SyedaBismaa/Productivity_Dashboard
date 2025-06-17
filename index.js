@@ -31,7 +31,7 @@ function TodoList() {
 
    if (localStorage.getItem(('currentTask'))) {
       currentTask = JSON.parse(localStorage.getItem(("currentTask")));
-   } ;
+   };
 
    function renderTask() {
       localStorage.setItem('currentTask', JSON.stringify(currentTask))
@@ -305,7 +305,7 @@ function WeatherDash() {
       if (Hours > 12) {
          header1Time.innerHTML = `${daysOfWeek}, ${String(Hours - 12).padStart('2', '0')}:${String(minuts).padStart('2', '0')}:${String(secounds).padStart('2', '0')} PM`;
       } else {
-         header1Time.innerHTML = `${daysOfWeek}, ${String(Hours - 12).padStart('2', '0')}:${String(minuts).padStart('2', '0')}:${String(secounds).padStart('2', '0')} AM`;
+         header1Time.innerHTML = `${daysOfWeek}, ${String(Hours).padStart('2', '0')}:${String(minuts).padStart('2', '0')}:${String(secounds).padStart('2', '0')} AM`;
       }
    }
 
